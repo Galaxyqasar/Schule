@@ -1,5 +1,7 @@
 #include "ParthenonMath.inc"
 #include "ParthenonTextures.inc"
+          
+#local Move = clock;
 
 //Pillow
 
@@ -8,7 +10,7 @@
 	    }
 	    cone{<0,18.5,0>,1.5,<0,19,0>,2
 	    }
-	    cone{<0,19,0>,1,<0,19.3,0>,1.9
+	    cone{<0,19,0>,2,<0,19.3,0>,1.5
 	    }
 	    box{<-2,19.3,-2>,<2,20,2>
 	}	
@@ -87,7 +89,11 @@
 #declare wallsTop = union{
 	box{<-22,0,-42>,<-18,16,42>} 
 	box{< 22,0,-42>,< 18,16,42>}
-	box{<-18,0, 12>,< 18,16,10>}
+	box{<-18,0, 12>,< 18,16,10>
+		#if(Move < 2*PI & Move > PI)
+			translate<0,-sin(Move-PI)*18,0>
+		#end
+	}
 	object{ entry 
 		translate <0,0,38-1.5>
 	}
@@ -99,7 +105,11 @@
 #declare wallsBottom = union{
 	box{<-22,0,-42>,<-18,2,42>} 
 	box{< 22,0,-42>,< 18,2,42>}
-	box{<-18,0, 12>,< 18,2,10>}
+	box{<-18,0, 12>,< 18,2,10>
+		#if(Move < 2*PI & Move > PI)
+			translate<0,-sin(Move-PI)*18,0>
+		#end
+	}
 	object{ entry 
 		translate <0,0,38-1.5>
 		scale <0,0.125,0>
@@ -182,31 +192,30 @@
 			rotate <0,180,0>
 		}
 	}
-	box{<0,1,-64>,<34,2,-62> 
+	box{<0,1,-64>,<34,2,-60> 
 		rotate <0,0,-14.697>
 		translate <0.4,9,0>
 	}
-	box{<0,1,64>,<34,2,62> 
+	box{<0,1,64>,<34,2,60> 
 		rotate <0,0,-14.697>
 		translate <0.4,9,0>
 	}
-	box{<0,1,-64>,<-34,2,-62> 
+	box{<0,1,-64>,<-34,2,-60> 
 		rotate <0,0,14.697>
 		translate <0.4,9,0>
 	}
-	box{<0,1,64>,<-34,2,62> 
+	box{<0,1,64>,<-34,2,60> 
 		rotate <0,0,14.697>
 		translate <0.4,9,0>
 	}
-	box{<-1,-1,-64>,<1,1,64>
-	    rotate<0,0,45>
-	    translate <0,10,0>
+	box{<-1,-1,-64>,<1,0.5,64>
+	    translate <0,10.5,0>
 	}
-	box{<-0.5,-0.5,-64>,<0.5,0.5,64>
-	    translate <33,1.9,0>
+	box{<-1,-0.5,-64>,<1,0.5,64>
+	    translate <32.5,1.9,0>
 	}
-	box{<-0.5,-0.5,-64>,<0.5,0.5,64>
-	    translate <-33,1.9,0>
+	box{<-1,-0.5,-64>,<1,0.5,64>
+	    translate <-31.5,1.9,0>
 	}
 	object{ roofSections
 		translate <0,1,0>
@@ -231,32 +240,58 @@
 
 #declare room_1 = union{
     object{pillow       
-        scale<1,0.9,1>
+        scale<1,1.1,1>
         translate<-8,0,4>
     }
     object{pillow       
-        scale<1,0.9,1>
+        scale<1,1.1,1>
         translate<-8,0,-4>
     }
     object{pillow       
-        scale<1,0.9,1>
+        scale<1,1.1,1>
         translate<8,0,4>
     }
-    object{pillow       
-        scale<1,0.9,1>
+    object{pillow        
+        scale<1,1.1,1>
         translate<8,0,-4>
     }
 }
 
 #declare room_2 = union{
-    
-}
+    #for(pos,0,9,1)
+    object{pillow      
+        scale<0.5,1.1,0.5>
+        translate<-12,0,-2+pos*-4.5>
+    }
+    object{pillow      
+        scale<0.5,1.1,0.5>
+        translate<12,0,-2+pos*-4.5>
+    }    
+    #end
+    object{pillow       
+        scale<0.5,1.1,0.5>
+        translate<6,0,-2>
+    }
+    object{pillow       
+        scale<0.5,1.1,0.5>
+        translate<0,0,-2>
+        #if(Move < 2*PI & Move > PI)
+			translate<0,-sin(Move-PI)*22,0>
+		#end
+    }
+    object{pillow       
+        scale<0.5,1.1,0.5>
+        translate<-6,0,-2>
+    }
+}       
 
 #declare rooms = union{
     object{room_1
         translate<0,0,25>
     }
-    object{room_2}
+    object{room_2
+        translate<0,0,10>
+    }
 }
 
                                    

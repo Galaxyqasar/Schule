@@ -28,7 +28,15 @@
 		pigment{ P_SandStone}
 		translate <0,9,0>
 	}
-	object{ rooms
+	object{ rooms      
+		texture{ T_SandStone}
+		pigment{ P_SandStone}
 		translate <0,9,0>
+	}
+	object{ roof
+		pigment{
+		    color rgb< 0.75, 0.5, 0.25>*0.25
+		}
+		translate <0,27,0>
 	}
 }

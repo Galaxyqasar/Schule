@@ -4,7 +4,7 @@
 
 #declare P_DarkGray = pigment{
 	color Gray*0.25
-}
+}                                                                                                   
 
 #declare P_SandStone = pigment{
 	color rgb< 0.75, 0.5, 0.25>*0.75

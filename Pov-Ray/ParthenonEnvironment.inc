@@ -1,11 +1,30 @@
 // sun ----------------------------------------------------------------------
 
-#declare Light = light_source { < -100,50,100> 
-	color White
-}
-
-#declare Light_2 = light_source { <0,300,150> 
-	color Gray*0.25
+#declare Lights = union{
+	light_source { < -100,50,100> 
+		color White
+	}
+	light_source { <0,300,150> 
+		color Gray*0.5
+	}
+	light_source { < 100,50,-100> 
+		color White
+	}
+	light_source { <0,300,-150> 
+		color Gray*0.5
+	}
+	light_source { < 0,25,14> 
+		color Gray*0.1
+	}
+	light_source { <0,25,-14> 
+		color Gray*0.1
+	} 
+	light_source { < 0,25,45> 
+		color Gray*0.1
+	}
+	light_source { <0,25, -45> 
+		color Gray*0.1
+	}
 }
 
 
@@ -42,12 +61,23 @@
 #declare heightField = height_field{
 	png "height-field.png" 
 	smooth
-	texture{
-    	pigment{
-    		color Gray
+	texture{ T_Stone10    
+    	normal { 
+    		agate 0.25 
+    		scale 0.15 
+    		rotate<0,0,0> 
     	}
-    }
+        finish { 
+        	phong 1 
+        } 
+        rotate<0,0,0> 
+        scale 0.5 
+    scale<1/100,1/10,1/100>
+        translate<0,0,0>
+    } // end of texture 
+
+
     translate<-0.5,0,-0.5>
-    scale<1000,200,1000>
-    translate<0,-200,0>
+    scale<950,100,950>
+    translate<0,-100,0>
 }

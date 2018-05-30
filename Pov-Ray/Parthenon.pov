@@ -6,8 +6,8 @@
 global_settings{ assumed_gamma 1.0 }
 #default{ 
 	finish{ 
-		ambient 0.2 
-		diffuse 0.9 
+		ambient 0.05 
+		diffuse 0.75 
 	}
 }
  
@@ -36,19 +36,17 @@ global_settings{ assumed_gamma 1.0 }
 //---------------------------- scene ----------------------------------------
 //---------------------------------------------------------------------------
 
-light_source{ Light}
-
-light_source{ Light_2}
+object{ Lights}
 
 sky_sphere{ Sky}
 
 object{ Ground
-	translate <0,-200,0>
+	translate <0,-100,0>
 }
 
 height_field{ heightField}
 
-camera{ Camera_Top}  
+camera{ Camera_Rotating}  
 
 object{	Parthenon}
 
