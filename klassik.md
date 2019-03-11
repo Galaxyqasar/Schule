@@ -8,4 +8,6 @@ wirken von:<br>
   Johann Gottfried Herder,<br>
   Christoph Martin Wieland<br>
  
+ auch nur schaffensperiode von Goethe und Schiller<br>
+ 
  
