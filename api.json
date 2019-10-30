@@ -69,7 +69,7 @@
                     "headline":"this is the headline",
                     "content":"this is the content of my comment"
                 },{
-                    "sid":"1a2b3c4d5e6f789"
+                    "sid":"1a2b3c4d5e6f789",
                     "url":"google.com",
                     "headline":"this is the headline",
                     "content":"this is the content of my comment"
@@ -95,7 +95,7 @@
                     "id":5,                     //the id of the comment, returned by get-comments
                     "vote":true,                //true == upvote, false == unvote
                 },{
-                    "sid":"1a2b3c4d5e6f789"
+                    "sid":"1a2b3c4d5e6f789",
                     "id":5,                     //the id of the comment, returned by get-comments
                     "vote":true,                //true == upvote, false == unvote
                 }
@@ -128,7 +128,7 @@
                 "userName":"my name",
                 "password":"my password",
             }
-        }
+        },
         "response":{
             "format":"json",
             "data":{
@@ -144,7 +144,7 @@
             "example":{
                 "userName":"my name"
             }
-        }
+        },
         "response":{
             "format":"json",
             "data":{
@@ -183,7 +183,7 @@
             "format":"json",
             "examples":[
                 {
-                    "sid":"1a2b3c4d5e6f789"
+                    "sid":"1a2b3c4d5e6f789",
                     "userName":"new name",          //optional
                     "password":"new password",      //optional
                     "email":"new_email@sample.com"	//optional
