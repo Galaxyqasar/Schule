@@ -1,0 +1,194 @@
+[
+	{
+		"name":"get-file",
+		"method":"GET",
+		"suburl":"/",
+		"example":[
+            "/index.html",
+            "/css/main.css"
+        ],
+        "response":{
+        	"format":"auto",
+        	"data":"content of file"
+        }
+	},{
+		"name":"get-comments",
+		"method":"GET",
+		"suburl":"/comments",
+		"example":[
+            "/comments?count='10'",                                 // top 10 comments global
+            "/comments?site='google.com'",                          // all comments for site google.com/*
+            "/comments?site='stackoverflow.com',count='5'",         // top 5 comments on stackoverflow.com/*
+            "/comments?site='stackoverflow.com',user='testuser'"    // all comments on stackoverflow.com/* , the ones created by testuser are marked
+        ],
+        "response":{
+        	"format":"json",
+        	"data":{
+        		"comments":[
+        			{
+	        			"id":1,
+						"headline":"first comment",
+						"content":"this is the first comment",
+						"author":"admin",
+						"likes":10,
+						"voted":false,
+						"url":"stackoverflow.com"
+        			}
+        		]
+        	}
+        }
+	},{
+		"name":"get-top-sites",
+		"method":"GET",
+		"suburl":"/sites",
+        "response":{
+        	"format":"json",
+        	"data":{
+        		"sites":[
+        			{
+	        			"url":"google.com",
+						"comments":2,
+        			},{
+	        			"url":"stackoverflow.com",
+						"comments":5,
+        			},
+        		]
+        	}
+        }
+	},{
+		"name":"post-comment",
+		"method":"POST",
+		"suburl":"/comments",
+        "payload":{
+            "format":"json",
+            "examples":[
+                {
+                    "userName":"my name",
+                    "password":"my password",
+                    "url":"google.com",
+                    "headline":"this is the headline",
+                    "content":"this is the content of my comment"
+                },{
+                    "sid":"1a2b3c4d5e6f789"
+                    "url":"google.com",
+                    "headline":"this is the headline",
+                    "content":"this is the content of my comment"
+                }
+            ]
+        },
+        "response":{
+        	"format":"json",
+        	"data":{
+        		"status":"error: wrong username or password"
+        	}
+        }
+	},{
+		"name":"vote-comment",
+		"method":"PATCH",
+		"suburl":"/comments",
+        "payload":{
+            "format":"json",
+            "examples":[
+                {
+                    "userName":"my name",
+                    "password":"my password",
+                    "id":5,                     //the id of the comment, returned by get-comments
+                    "vote":true,                //true == upvote, false == unvote
+                },{
+                    "sid":"1a2b3c4d5e6f789"
+                    "id":5,                     //the id of the comment, returned by get-comments
+                    "vote":true,                //true == upvote, false == unvote
+                }
+            ]
+        }
+	},{
+		"name":"signup",
+		"method":"POST",
+		"suburl":"/signup",
+        "payload":{
+            "format":"json",
+            "example":{
+                "userName":"my name",
+                "password":"my password",
+            }
+        },
+        "response":{
+            "format":"json",
+            "data":{
+                "status":"signup succsessfull"
+            }
+        }
+	},{
+		"name":"signin",
+		"method":"PATCH",
+		"suburl":"/signin",
+        "payload":{
+            "format":"json",
+            "example":{
+                "userName":"my name",
+                "password":"my password",
+            }
+        }
+        "response":{
+            "format":"json",
+            "data":{
+                "sid":"1a2b3c4d5e6f789"
+            }
+        }
+	},{
+        "name":"is-signed-in",
+        "method":"GET",
+        "suburl":"/signin",
+        "payload":{
+            "format":"json",
+            "example":{
+                "userName":"my name"
+            }
+        }
+        "response":{
+            "format":"json",
+            "data":{
+                "status":"signed in",   //or "not signed in"
+                "val":true              //or false
+            }
+        }
+    },{
+		"name":"signout",
+		"method":"PATCH",
+		"suburl":"/signout",
+		"example":[
+			"/signout?name='my username'"
+		]
+	},{
+		"name":"get-user-data",
+		"method":"GET",
+		"suburl":"/users",
+		"example":[
+            "/users?name='my username',password='my password'",
+			"/users?sid='1a2b3c4d5e6f789'",
+		],
+        "response":{
+            "format":"json",
+            "example":{
+                "userName":"my name",
+                "password":"my password",
+                "email":"current_email@sample.com"
+            }
+        }
+	},{
+		"name":"set-user-data",
+		"method":"PATCH",
+		"suburl":"/users",
+        "payload":{
+            "format":"json",
+            "examples":[
+                {
+                    "sid":"1a2b3c4d5e6f789"
+                    "userName":"new name",          //optional
+                    "password":"new password",      //optional
+                    "email":"new_email@sample.com"	//optional
+                }
+            ]
+        }
+	}
+]
